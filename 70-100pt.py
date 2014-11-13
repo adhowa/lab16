@@ -50,17 +50,28 @@ class myApp(object):
         global rocket1Fired
         x1,y1,x2,y2 = drawpad.coords(enemy)
         px1,py1,px2,py2 = drawpad.coords(player)
-
+        rx1,ry1,rx2,ry2 = drawpad.coords(rocket1)
+        
         if x2 > 800:
             direction = - 5
         elif x1 < 0:
             direction = 5
         drawpad.move(enemy, direction, 0)
         drawpad.after(5,self.animate)
-
+        
+        if px2 > 800:
+            drawpad.move(player,-4,0)
+            drawpad.move(rocket1,-4,0)
+        if px1 < 0:
+            drawpad.move(player,4,0)
+            drawpad.move(rocket1,4,0)    
+        
+        
     def key(self,event):
         global player
         global rocket1Fired
+        px1,py1,px2,py2 = drawpad.coords(player)
+
         if event.char == "w":
             drawpad.move(player,0,-4)
             drawpad.move(rocket1,0,-4)
@@ -68,12 +79,16 @@ class myApp(object):
         if event.char == "s":
             drawpad.move(player,0,4)
             drawpad.move(rocket1,0,4)
+            if py1 < 0: 
+                drawpad.move(player,0,-4)
+                drawpad.move(rocket1,0,-4)
     
         if event.char == "d":
             drawpad.move(player,4,0)
             drawpad.move(rocket1,4,0)
             
         if event.char == "a":
+            
             drawpad.move(player,-4,0)
             drawpad.move(rocket1,-4,0)
             
