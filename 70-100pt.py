@@ -65,7 +65,9 @@ class myApp(object):
         if px1 < 0:
             drawpad.move(player,4,0)
             drawpad.move(rocket1,4,0)    
-        
+        if py2 > 600:
+            drawpad.move(player,0,-4)
+            drawpad.move(rocket1,0,-4)
         
     def key(self,event):
         global player
@@ -79,9 +81,7 @@ class myApp(object):
         if event.char == "s":
             drawpad.move(player,0,4)
             drawpad.move(rocket1,0,4)
-            if py1 < 0: 
-                drawpad.move(player,0,-4)
-                drawpad.move(rocket1,0,-4)
+         
     
         if event.char == "d":
             drawpad.move(player,4,0)
