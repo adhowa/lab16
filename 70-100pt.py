@@ -32,7 +32,6 @@ class myApp(object):
         self.label1.pack()
 
         self.rockets = 3 
-        self.rockets = self.rockets -1    
         self.rocketsTxt = Label(root, text=str(self.rockets), width=len(str(self.rockets)), bg='green')
         self.rocketsTxt.pack()
         
@@ -85,6 +84,8 @@ class myApp(object):
             
         if event.char == " ":
             rocket1Fired = True 
+            self.rockets = self.rockets -1
+            self.rocketsTxt.configure(text=self.rockets)    
             
         if event.char == "s":
             drawpad.move(player,0,4)
